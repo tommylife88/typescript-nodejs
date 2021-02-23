@@ -1,11 +1,13 @@
 # TypeScript+ESLint+Prettier+VSCode
 
 TypeScriptのVisual Studio Code上の開発環境を整えたもの。  
-JSのLinterとして `ESLint` 、コードフォーマッターとして `Prettier` 入り。
+JSのLinterとして`ESLint`、コードフォーマッターとして`Prettier`入り。TypeDocも入れてみた。
 
 ## 動作環境
 
-```bash
+Windows 10 Home 64bit
+
+```shell
 > node -v
 v15.7
 > npm -v
@@ -16,16 +18,16 @@ v15.7
 
 ## インストール
 
-```
+```shell
 # package.jsonの記載されているパッケージをすべてインストール
 > yarn
 ```
 
 ## スクリプト
 
-[package.json](package.json)の `"scripts"` でコマンドを定義しているので `yarn` で実行する。
+[package.json](package.json)の`scripts`でコマンドを定義しているので`yarn`で実行する。
 
-```
+```shell
 > yarn run
 info Project commands
    - build
@@ -52,10 +54,12 @@ info Project commands
       node .
    - tsc
       tsc
+   - tdoc
+      yarn typedoc --out ./typedoc ./src
 ```
 
 使い方。
-```
+```shell
 # 実行
 > yarn run dev
 
@@ -91,9 +95,16 @@ Rulesは[ここ](https://eslint.org/docs/user-guide/configuring/rules#configurin
 VSCodeの設定でファイルセーブ時に自動でフォーマットするようにしている。  
 気に入らなければ設定をコメントアウトする。
 
+## TypeDoc
+
+http://typedoc.org/
+
+JSDocのTypeScript版。  
+JSDocより優れている点として、アノテーション（`@param {number}`とか`@class`）を書く必要がほぼ無い。TSならでは。全部書いてあるんで。
+
 ## セットアップ手順（参考までに）
 
-```
+```shell
 # package.json
 yarn init -y
 yarn add -D yarn-run-all
@@ -108,10 +119,11 @@ yarn add -D ts-node ts-node-dev typescript @types/node
 yarn run tsc --init
 
 # ESLint
-#yarn run eslint --init
 yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 
 # Prettier
 yarn add -D prettier eslint-config-prettier
 
+# typedoc
+yarn add -D typedoc
 ```
